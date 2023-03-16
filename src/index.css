@@ -19,7 +19,7 @@ input {
 	font: inherit;
 }
 
-button {
+.icon {
 	border: none;
 	background-position: center;
 	background-repeat: no-repeat;
