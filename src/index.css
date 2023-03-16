@@ -10,8 +10,8 @@ html {
 	scroll-behavior: smooth;
 	font-size: var(--FS);
 	font-family: var(--FF);
+	/* height: 100%; */
 	/* color: var(--BLACK); */
-	/* background-color: var(--GRAY); */
 }
 
 button,

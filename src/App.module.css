@@ -1,0 +1,9 @@
+.dashboard {
+	background-image: url("./images/Dashboard.png");
+	display: block;
+	width: 100%;
+	height: 100vh;
+	/* background-position: center; */
+	background-repeat: no-repeat;
+	background-size: cover;
+}

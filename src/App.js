@@ -1,7 +1,11 @@
+import classes from "./App.module.css";
+import Drawer from "./components/Drawer";
+
 function App() {
 	return (
 		<main>
-			<p>das</p>
+			<Drawer />
+			<button className={classes.dashboard} />
 		</main>
 	);
 }
