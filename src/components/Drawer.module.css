@@ -1,4 +1,5 @@
 .backdrop {
+	/* TODO: add fade in */
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -13,7 +14,7 @@
 	position: fixed;
 	height: 100%;
 	left: 100%;
-	width: 30%;
+	width: 460px;
 	z-index: 100;
 	background-color: white;
 
@@ -25,4 +26,43 @@
 .active {
 	transform: translateX(-100%);
 	/* opacity: 1; */
+}
+
+.utilityButtons {
+	display: flex;
+	margin: 0.5em 0 0 1em;
+}
+
+.cancelClass,
+.editClass {
+	background-color: transparent;
+	border: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 2em;
+	width: 2em;
+	margin-right: 2.5em;
+}
+
+.editClass {
+	background-image: url("../images/edit.svg");
+}
+
+.cancelClass {
+	background-image: url("../images/cancelClass.svg");
+	color: red;
+}
+
+.buttonText {
+	display: flex;
+	align-items: center;
+	margin-left: 2.2em;
+	white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+	.drawer {
+		width: 85%;
+	}
 }

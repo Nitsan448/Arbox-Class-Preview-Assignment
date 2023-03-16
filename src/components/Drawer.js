@@ -9,8 +9,17 @@ function Drawer(props) {
 		<>
 			{createPortal(
 				<>
-					{/* {<div className={classes.backdrop} />} */}
-					<div className={drawerClasses}></div>
+					{props.isOpen && <div className={classes.backdrop} />}
+					<div className={drawerClasses}>
+						<div className={classes.utilityButtons}>
+							<button className={classes.editClass}>
+								<span className={classes.buttonText}>Edit</span>
+							</button>
+							<button className={classes.cancelClass}>
+								<span className={classes.buttonText}>Cancel Class</span>
+							</button>
+						</div>
+					</div>
 				</>,
 				document.getElementById("drawer-root")
 			)}
