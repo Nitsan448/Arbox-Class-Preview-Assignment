@@ -6,15 +6,23 @@
 	height: 100vh;
 	z-index: 10;
 	background: rgba(0, 0, 0, 0.5);
+	pointer-events: none;
 }
 
 .drawer {
 	position: fixed;
 	height: 100%;
-	right: 0%;
+	left: 100%;
 	width: 30%;
 	z-index: 100;
 	background-color: white;
-	border: var(--BORDER);
-	border-radius: var(--BORDER-RADIUS);
+
+	/* transition-property: opacity; */
+	transition-duration: 1s;
+	transition-property: transform;
+}
+
+.active {
+	transform: translateX(-100%);
+	/* opacity: 1; */
 }
