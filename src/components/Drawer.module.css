@@ -30,19 +30,14 @@
 
 .utilityButtons {
 	display: flex;
-	margin: 0.5em 0 0 1em;
+	margin: 0.5em 0 2em 1em;
 }
 
 .cancelClass,
 .editClass {
-	background-color: transparent;
-	border: none;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 2em;
-	width: 2em;
-	margin-right: 2.5em;
+	height: 1.8em;
+	width: 1.8em;
+	margin-right: 2.2em;
 }
 
 .editClass {
@@ -59,6 +54,27 @@
 	align-items: center;
 	margin-left: 2.2em;
 	white-space: nowrap;
+	font-size: 0.85rem;
+}
+
+.workoutOfTheDay {
+	margin-bottom: 2em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.workoutOfTheDayIcon {
+	background-image: url("../images/workoutOfTheDay.svg");
+	border: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 4em 4em;
+	transform: rotateX(180deg);
+	height: 4.5em;
+	width: 4.5em;
+	background-color: pink;
+	border-radius: 50%;
+	margin: 0em auto 0.7em;
 }
 
 @media (max-width: 560px) {

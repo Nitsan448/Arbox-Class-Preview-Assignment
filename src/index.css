@@ -19,12 +19,26 @@ input {
 	font: inherit;
 }
 
+button {
+	border: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: transparent;
+}
+
 button:hover {
 	cursor: pointer;
 }
 
 img {
 	display: block;
+}
+
+hr {
+	background-color: rgb(209, 209, 209);
+	height: 1px;
+	border: none;
 }
 
 .invalidParagraph {

@@ -19,6 +19,12 @@ function Drawer(props) {
 								<span className={classes.buttonText}>Cancel Class</span>
 							</button>
 						</div>
+						<div className={classes.workoutOfTheDay}>
+							<div className={classes.workoutOfTheDayIcon}></div>
+							<p>Workout of the day</p>
+						</div>
+
+						<hr />
 					</div>
 				</>,
 				document.getElementById("drawer-root")
