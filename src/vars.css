@@ -1,7 +1,7 @@
 :root {
 	/* FONTS */
 	--FF: Arial, Helvetica, sans-serif;
-	--FS: clamp(0.75rem, 2.1vh, 1.4rem);
+	--FS: clamp(0.6rem, 1.8vh, 1.1rem);
 
 	/* COLORS */
 
@@ -10,6 +10,6 @@
 	/* --BORDER-RADIUS: 5px; */
 
 	/* MARGIN */
-	--SECTION__MARGIN: 2em;
+	--SECTION__MARGIN: 2.3em;
 	/* --MARGIN: clamp(1em, 2.5vh, 1.5em) 0; */
 }
