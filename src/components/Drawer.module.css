@@ -123,6 +123,57 @@
 	margin-top: 1em;
 }
 
+.participents {
+	display: flex;
+	justify-content: space-between;
+	margin: var(--SECTION__MARGIN) 3em var(--SECTION__MARGIN) 3em;
+}
+
+.dropDown {
+	display: flex;
+	flex-direction: column;
+}
+
+.dropDown__stateButton {
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 0.5em 0 0.5em;
+}
+
+.dropDown__plus {
+	text-align: right;
+	font-size: 1.5rem;
+	font-weight: lighter;
+}
+
+.dropDown__stateButton,
+.dropDown__client {
+	width: 12em;
+	height: 2.5em;
+	padding: 0 0.5em 0 0.5em;
+}
+
+.dropDown__client:hover,
+.dropDown__client:active {
+	background-color: lightgreen;
+}
+
+.dropDown__clients {
+	box-shadow: 0px 0px 2px 2px rgba(180, 180, 180, 0.2);
+}
+
+.dropDown__client {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	border: none;
+}
+
+.dropDown__client {
+}
+
 @media (max-width: 560px) {
 	.drawer {
 		width: 85%;

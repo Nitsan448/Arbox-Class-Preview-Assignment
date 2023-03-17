@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Drawer.module.css";
 import { createPortal } from "react-dom";
+import testIcon from "../images/call.svg";
 
 function Drawer(props) {
 	const drawerClasses = props.isOpen ? `${classes.drawer} ${classes.active}` : classes.drawer;
 	const backdropClasses = props.isOpen ? `${classes.backdrop} ${classes.activeBackdrop}` : classes.backDrop;
+
+	const [classParticipents, setClassParticipents] = useState([
+		{ name: "Walter White", participates: false, photo: testIcon },
+		{ name: "Michal Scott", participates: false, photo: testIcon },
+		{ name: "Todd Chavez", participates: false, photo: testIcon },
+	]);
+	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
 	function renderUtilityButtonsSection() {
 		return (
@@ -64,6 +72,37 @@ function Drawer(props) {
 		);
 	}
 
+	function renderDropDownMenu() {
+		return (
+			<div className={classes.participents}>
+				<p>Participents</p>
+				<div className={classes.dropDown}>
+					<button
+						className={classes.dropDown__stateButton}
+						onClick={() => {
+							setIsDropDownOpen(!isDropDownOpen);
+						}}>
+						<span>Add Client</span>
+						<span className={classes.dropDown__plus}>+</span>
+					</button>
+					{isDropDownOpen && (
+						<div className={classes.dropDown__clients}>
+							{classParticipents.map(
+								(participent) =>
+									!participent.participates && (
+										<button className={classes.dropDown__client} key={participent.name}>
+											<img src={participent.photo} width={24} height={24}></img>
+											{participent.name}
+										</button>
+									)
+							)}
+						</div>
+					)}
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			{createPortal(
@@ -77,6 +116,7 @@ function Drawer(props) {
 						<hr />
 						{renderYouShouldKnowSection()}
 						<hr />
+						{renderDropDownMenu()}
 					</div>
 				</>,
 				document.getElementById("drawer-root")
