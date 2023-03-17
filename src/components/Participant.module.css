@@ -1,0 +1,60 @@
+.participants {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin: 1.5em 3em 1.5em 3em;
+	white-space: nowrap;
+}
+
+.participantImage {
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+}
+.participantName {
+	width: 40%;
+}
+
+.checkInButton {
+	background-color: lightgreen;
+	border-radius: var(--BORDER-RADIUS);
+	border: none;
+	padding: 0.5em 1.5em;
+	margin-right: 2em;
+}
+
+.callButton,
+.deleteButton {
+	width: 1.8em;
+	height: 1.8em;
+}
+
+.callButton {
+	/* TODO: Change to whatsapp icon */
+	background-image: url("../images/call.svg");
+}
+
+.deleteButton {
+	background-image: url("../images/delete.svg");
+}
+
+@media (max-width: 540px) {
+	.participants {
+		gap: 0.5em;
+		margin: 1.5em 1.5em 1.5em 1.5em;
+		white-space: pre-wrap;
+		font-size: 0.9rem;
+	}
+
+	.participantName {
+		width: 30%;
+	}
+
+	.checkInButton {
+		background-color: lightgreen;
+		border-radius: var(--BORDER-RADIUS);
+		border: none;
+		padding: 0.5em 1em;
+		margin-right: 1em;
+	}
+}

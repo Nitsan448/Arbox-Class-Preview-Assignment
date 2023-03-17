@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./Drawer.module.css";
 import { createPortal } from "react-dom";
 import testIcon from "../images/MichalScott.jpg";
+import Participant from "./Participant";
 
 function Drawer(props) {
 	const drawerClasses = props.isOpen ? `${classes.drawer} ${classes.active}` : classes.drawer;
@@ -9,36 +10,20 @@ function Drawer(props) {
 
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-	const [participents, setParticipents] = useState([
-		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: true },
-		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: true },
+	const [participants, setparticipants] = useState([
+		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 2, name: "Todd Chavez", image: testIcon, checkedIn: false, inClass: false },
 	]);
 
-	function toggleParticipentCheckedInState(participentId) {
-		setParticipents(
-			participents.map((participent) =>
-				participent.id === participentId ? { ...participent, checkedIn: !participent.checkedIn } : participent
-			)
-		);
-	}
-
-	function toggleParticipentInClassState(participentId) {
-		setParticipents(
-			participents.map((participent) =>
-				participent.id === participentId ? { ...participent, inClass: !participent.inClass } : participent
-			)
-		);
-	}
-
-	function renderUtilityButtonsSection() {
+	function renderClassButtonsSection() {
 		return (
-			<div className={classes.utilityButtons}>
-				<button className={`${classes.utilityButtons__editClass} icon`}>
-					<span className={classes.utilityButtons__buttonText}>Edit</span>
+			<div className={classes.classButtons}>
+				<button className={`${classes.classButtons__editClass} icon`}>
+					<span className={classes.classButtons__buttonText}>Edit</span>
 				</button>
-				<button className={`${classes.utilityButtons__cancelClass} icon`}>
-					<span className={classes.utilityButtons__buttonText}>Cancel Class</span>
+				<button className={`${classes.classButtons__cancelClass} icon`}>
+					<span className={classes.classButtons__buttonText}>Cancel Class</span>
 				</button>
 			</div>
 		);
@@ -47,9 +32,8 @@ function Drawer(props) {
 	function renderWorkoutOfTheDaySection() {
 		return (
 			<div className={classes.workoutOfTheDay}>
-				<div className={`${classes.workoutOfTheDay__icon} icon`}></div>
-				{/* TODO: change to something funny */}
-				<p>Zumba</p>
+				<div className={`${classes.zumbaIcon} icon`}></div>
+				<h3>Zumba</h3>
 			</div>
 		);
 	}
@@ -60,22 +44,25 @@ function Drawer(props) {
 			<div className={classes.classInformation}>
 				<div>
 					<div className={`${classes.classInformation__coachIcon} icon`} />
-					<h4>Tom A</h4>
+					<h4>Leslie Knope</h4>
 					<p className={classes.classInformation__text}>Coach</p>
 				</div>
 				<div>
 					<div className={`${classes.classInformation__startTimeIcon} icon`}></div>
-					<h4>16:15</h4>
+					<h4>19:00</h4>
 					<p className={classes.classInformation__text}>Start Time</p>
 				</div>
 				<div>
-					<div className={`${classes.classInformation__participentsIcon} icon`}></div>
-					{/* TODO: change this according to number of participents */}
-					<h4>3/15</h4>
-					<p className={classes.classInformation__text}>Participents</p>
+					<div className={`${classes.classInformation__participantsIcon} icon`}></div>
+					<h4>{getNumberOfClassparticipants()}/15</h4>
+					<p className={classes.classInformation__text}>Participants</p>
 				</div>
 			</div>
 		);
+	}
+
+	function getNumberOfClassparticipants() {
+		return participants.filter((particpent) => particpent.inClass).length;
 	}
 
 	function renderYouShouldKnowSection() {
@@ -84,17 +71,17 @@ function Drawer(props) {
 				{/* TODO: make it less bold */}
 				<h3>You Should Know...</h3>
 
-				{/* TODO: make this something funny and according to the participent */}
+				{/* TODO: make this something funny and according to the participant */}
 				<p className={classes.youShouldKnowText}>Dagan & Eden which is in the class have a debt</p>
 			</div>
 		);
 	}
 
-	function renderDropDownMenu() {
+	function renderDropDownSection() {
 		// TODO: Add animation to drop down?
 		return (
 			<div className={classes.dropDownSection}>
-				<p>Participents</p>
+				<p>participants</p>
 				<div className={classes.dropDown}>
 					<button
 						className={classes.dropDown__stateButton}
@@ -104,58 +91,68 @@ function Drawer(props) {
 						<span>Add Client</span>
 						<span className={classes.dropDown__plus}>+</span>
 					</button>
-					{isDropDownOpen && (
-						<div className={classes.dropDown__clients}>
-							{participents.map(
-								(participent) =>
-									!participent.inClass && (
-										<button
-											onClick={() => toggleParticipentInClassState(participent.id)}
-											className={classes.dropDown__client}
-											key={participent.id}>
-											<img
-												className={classes.clientImage}
-												alt={participent.name}
-												src={participent.image}></img>
-											{participent.name}
-										</button>
-									)
-							)}
-						</div>
-					)}
+					{isDropDownOpen && renderDropDownMenu()}
 				</div>
 			</div>
 		);
 	}
 
-	function renderParticipents() {
+	function renderDropDownMenu() {
 		return (
-			<div>
-				{participents.map(
-					(participent) =>
-						participent.inClass && (
-							<div className={classes.participents} key={participent.id}>
+			<div className={classes.dropDown__clients}>
+				{participants.map(
+					(participant) =>
+						!participant.inClass && (
+							<button
+								onClick={() => {
+									setIsDropDownOpen(false);
+									toggleparticipantInClassState(participant.id);
+								}}
+								className={classes.dropDown__client}
+								key={participant.id}>
 								<img
-									className={classes.participentImage}
-									alt={participent.name}
-									src={participent.image}
-									width={24}
-									height={24}></img>
-								<p className={classes.participentName}>{participent.name}</p>
-								<button
-									onClick={() => toggleParticipentCheckedInState(participent.id)}
-									className={classes.checkInButton}>
-									{participent.checkedIn ? "Checked" : "Check In"}
-								</button>
-								<button className={`${classes.callButton} icon`} />
-								<button
-									onClick={() => toggleParticipentInClassState(participent.id)}
-									className={`${classes.deleteButton} icon`}
-								/>
-							</div>
+									className={classes.clientImage}
+									alt={participant.name}
+									src={participant.image}></img>
+								{participant.name}
+							</button>
 						)
 				)}
 			</div>
+		);
+	}
+
+	function renderparticipantsSection() {
+		return (
+			<>
+				{participants.map(
+					(participant) =>
+						participant.inClass && (
+							<Participant
+								participant={participant}
+								toggleCheckedInState={toggleparticipantCheckedInState}
+								toggleInClassState={toggleparticipantInClassState}
+								key={participant.id}
+							/>
+						)
+				)}
+			</>
+		);
+	}
+
+	function toggleparticipantCheckedInState(participantId) {
+		setparticipants(
+			participants.map((participant) =>
+				participant.id === participantId ? { ...participant, checkedIn: !participant.checkedIn } : participant
+			)
+		);
+	}
+
+	function toggleparticipantInClassState(participantId) {
+		setparticipants(
+			participants.map((participant) =>
+				participant.id === participantId ? { ...participant, inClass: !participant.inClass } : participant
+			)
 		);
 	}
 
@@ -165,15 +162,15 @@ function Drawer(props) {
 				<>
 					<div className={backdropClasses} />
 					<div className={drawerClasses}>
-						{renderUtilityButtonsSection()}
+						{renderClassButtonsSection()}
 						{renderWorkoutOfTheDaySection()}
 						<hr />
 						{renderClassInformationSection()}
 						<hr />
 						{renderYouShouldKnowSection()}
 						<hr />
-						{renderDropDownMenu()}
-						{renderParticipents()}
+						{renderDropDownSection()}
+						{renderparticipantsSection()}
 					</div>
 				</>,
 				document.getElementById("drawer-root")

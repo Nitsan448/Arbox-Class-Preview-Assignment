@@ -36,29 +36,28 @@
 	/* opacity: 1; */
 }
 
-/* TODO: rename */
-.utilityButtons {
+.classButtons {
 	display: flex;
 	margin: 0.5em 0 var(--SECTION__MARGIN) 1em;
 }
 
-.utilityButtons__cancelClass,
-.utilityButtons__editClass {
+.classButtons__cancelClass,
+.classButtons__editClass {
 	height: 1.8em;
 	width: 1.8em;
 	margin-right: 3em;
 }
 
-.utilityButtons__editClass {
+.classButtons__editClass {
 	background-image: url("../images/edit.svg");
 }
 
-.utilityButtons__cancelClass {
+.classButtons__cancelClass {
 	background-image: url("../images/cancelClass.svg");
-	color: red;
+	color: var(--RED);
 }
 
-.utilityButtons__buttonText {
+.classButtons__buttonText {
 	display: flex;
 	align-items: center;
 	margin-left: 2.3em;
@@ -69,10 +68,9 @@
 .workoutOfTheDay {
 	margin-bottom: var(--SECTION__MARGIN);
 	text-align: center;
-	font-weight: bold;
 }
 
-.workoutOfTheDay__icon {
+.zumbaIcon {
 	background-image: url("../images/workoutOfTheDay.png");
 	background-size: 4em 4em;
 	height: 5em;
@@ -84,15 +82,15 @@
 
 .classInformation {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
-	margin: var(--SECTION__MARGIN) 1em var(--SECTION__MARGIN) 1em;
+	margin: var(--SECTION__MARGIN) 5em;
 	text-align: center;
 }
 
 .classInformation__coachIcon,
 .classInformation__startTimeIcon,
-.classInformation__participentsIcon {
+.classInformation__participantsIcon {
 	height: 2.5em;
 	width: 2.5em;
 	margin: 0 auto 1.1em;
@@ -106,8 +104,8 @@
 	background-image: url("../images/startTime.svg");
 }
 
-.classInformation__participentsIcon {
-	background-image: url("../images/participents.svg");
+.classInformation__participantsIcon {
+	background-image: url("../images/participants.svg");
 }
 
 .classInformation__text {
@@ -115,7 +113,7 @@
 }
 
 .youShouldKnow {
-	margin: var(--SECTION__MARGIN) 0em var(--SECTION__MARGIN) 3em;
+	margin: var(--SECTION__MARGIN) 3em;
 }
 
 .youShouldKnowText {
@@ -124,7 +122,7 @@
 
 .dropDownSection {
 	position: relative;
-	margin: var(--SECTION__MARGIN) 3em var(--SECTION__MARGIN) 3em;
+	margin: var(--SECTION__MARGIN) 3em;
 }
 
 .dropDown {
@@ -140,7 +138,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 0.5em 0 0.5em;
 }
 
 .dropDown__plus {
@@ -179,49 +176,23 @@
 	margin-right: 0.7em;
 }
 
-.participentImage {
-	border-radius: 50%;
-	width: 36px;
-	height: 36px;
-}
-
-.participents {
-	display: flex;
-	align-items: center;
-	gap: 1em;
-	margin: 1.5em 3em 1.5em 3em;
-	white-space: nowrap;
-}
-
-.participentName {
-	width: 40%;
-}
-
-.checkInButton {
-	background-color: lightgreen;
-	border-radius: var(--BORDER-RADIUS);
-	border: none;
-	padding: 0.5em 1.5em;
-	margin-right: 2em;
-}
-
-.callButton,
-.deleteButton {
-	width: 1.8em;
-	height: 1.8em;
-}
-
-.callButton {
-	/* TODO: Change to whatsapp icon */
-	background-image: url("../images/call.svg");
-}
-
-.deleteButton {
-	background-image: url("../images/delete.svg");
-}
-
-@media (max-width: 560px) {
+@media (max-width: 540px) {
 	.drawer {
 		width: 85%;
+	}
+
+	.dropDown__stateButton,
+	.dropDown__client {
+		width: 8em;
+		padding: 0 0.3em 0 0.3em;
+	}
+
+	.youShouldKnow,
+	.dropDownSection {
+		margin: var(--SECTION__MARGIN) 1.5em;
+	}
+
+	.classInformation {
+		margin: var(--SECTION__MARGIN) 2.5em;
 	}
 }
