@@ -1,18 +1,37 @@
 import React, { useState } from "react";
 import classes from "./Drawer.module.css";
 import { createPortal } from "react-dom";
-import testIcon from "../images/call.svg";
+import testIcon from "../images/MichalScott.jpg";
 
 function Drawer(props) {
 	const drawerClasses = props.isOpen ? `${classes.drawer} ${classes.active}` : classes.drawer;
 	const backdropClasses = props.isOpen ? `${classes.backdrop} ${classes.activeBackdrop}` : classes.backDrop;
 
-	const [classParticipents, setClassParticipents] = useState([
-		{ name: "Walter White", participates: false, photo: testIcon },
-		{ name: "Michal Scott", participates: false, photo: testIcon },
-		{ name: "Todd Chavez", participates: false, photo: testIcon },
-	]);
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+	const [classParticipents, setClassParticipents] = useState([
+		{ id: 0, name: "Walter White", photo: testIcon, checkedIn: false, participates: true },
+		{ id: 1, name: "Michal Scott", photo: testIcon, checkedIn: false, participates: true },
+		{ id: 2, name: "Todd Chavez", photo: testIcon, checkedIn: false, participates: false },
+	]);
+
+	function toggleParticipentCheckedInState(participentId) {
+		setClassParticipents(
+			classParticipents.map((participent) =>
+				participent.id === participentId ? { ...participent, checkedIn: !participent.checkedIn } : participent
+			)
+		);
+	}
+
+	function toggleParticipentParticipatesState(participentId) {
+		setClassParticipents(
+			classParticipents.map((participent) =>
+				participent.id === participentId
+					? { ...participent, participates: !participent.participates }
+					: participent
+			)
+		);
+	}
 
 	function renderUtilityButtonsSection() {
 		return (
@@ -39,6 +58,7 @@ function Drawer(props) {
 
 	function renderClassInformationSection() {
 		return (
+			// TODO: Make text length not change position of each div
 			<div className={classes.classInformation}>
 				<div>
 					<div className={`${classes.classInformation__coachIcon} icon`} />
@@ -73,8 +93,9 @@ function Drawer(props) {
 	}
 
 	function renderDropDownMenu() {
+		// TODO: Add animation to drop down?
 		return (
-			<div className={classes.participents}>
+			<div className={classes.dropDownSection}>
 				<p>Participents</p>
 				<div className={classes.dropDown}>
 					<button
@@ -90,8 +111,14 @@ function Drawer(props) {
 							{classParticipents.map(
 								(participent) =>
 									!participent.participates && (
-										<button className={classes.dropDown__client} key={participent.name}>
-											<img src={participent.photo} width={24} height={24}></img>
+										<button
+											onClick={() => toggleParticipentParticipatesState(participent.id)}
+											className={classes.dropDown__client}
+											key={participent.id}>
+											<img
+												className={classes.clientImage}
+												alt={participent.name}
+												src={participent.photo}></img>
 											{participent.name}
 										</button>
 									)
@@ -99,6 +126,37 @@ function Drawer(props) {
 						</div>
 					)}
 				</div>
+			</div>
+		);
+	}
+
+	function renderParticipents() {
+		return (
+			<div>
+				{classParticipents.map(
+					(participent) =>
+						participent.participates && (
+							<div className={classes.participents} key={participent.id}>
+								<img
+									className={classes.participentImage}
+									alt={participent.name}
+									src={participent.photo}
+									width={24}
+									height={24}></img>
+								<p className={classes.participentName}>{participent.name}</p>
+								<button
+									onClick={() => toggleParticipentCheckedInState(participent.id)}
+									className={classes.checkInButton}>
+									{participent.checkedIn ? "Checked" : "Check In"}
+								</button>
+								<button className={`${classes.callButton} icon`} />
+								<button
+									onClick={() => toggleParticipentParticipatesState(participent.id)}
+									className={`${classes.deleteButton} icon`}
+								/>
+							</div>
+						)
+				)}
 			</div>
 		);
 	}
@@ -117,6 +175,7 @@ function Drawer(props) {
 						{renderYouShouldKnowSection()}
 						<hr />
 						{renderDropDownMenu()}
+						{renderParticipents()}
 					</div>
 				</>,
 				document.getElementById("drawer-root")

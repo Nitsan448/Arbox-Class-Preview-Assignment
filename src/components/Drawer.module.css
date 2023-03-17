@@ -46,7 +46,7 @@
 .utilityButtons__editClass {
 	height: 1.8em;
 	width: 1.8em;
-	margin-right: 2.2em;
+	margin-right: 3em;
 }
 
 .utilityButtons__editClass {
@@ -61,7 +61,7 @@
 .utilityButtons__buttonText {
 	display: flex;
 	align-items: center;
-	margin-left: 2.2em;
+	margin-left: 2.3em;
 	white-space: nowrap;
 	font-size: 0.85rem;
 }
@@ -123,13 +123,15 @@
 	margin-top: 1em;
 }
 
-.participents {
-	display: flex;
-	justify-content: space-between;
+.dropDownSection {
+	position: relative;
 	margin: var(--SECTION__MARGIN) 3em var(--SECTION__MARGIN) 3em;
 }
 
 .dropDown {
+	position: absolute;
+	top: 0%;
+	right: 0%;
 	display: flex;
 	flex-direction: column;
 }
@@ -150,8 +152,8 @@
 
 .dropDown__stateButton,
 .dropDown__client {
-	width: 12em;
-	height: 2.5em;
+	width: 13em;
+	height: 2.3em;
 	padding: 0 0.5em 0 0.5em;
 }
 
@@ -171,7 +173,52 @@
 	border: none;
 }
 
-.dropDown__client {
+.clientImage {
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	margin-right: 0.7em;
+}
+
+.participentImage {
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+}
+
+.participents {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin: 1.5em 3em 1.5em 3em;
+	white-space: nowrap;
+}
+
+.participentName {
+	width: 40%;
+}
+
+.checkInButton {
+	background-color: lightgreen;
+	border-radius: var(--BORDER-RADIUS);
+	border: none;
+	padding: 0.5em 1.5em;
+	margin-right: 2em;
+}
+
+.callButton,
+.deleteButton {
+	width: 1.8em;
+	height: 1.8em;
+}
+
+.callButton {
+	/* TODO: Change to whatsapp icon */
+	background-image: url("../images/call.svg");
+}
+
+.deleteButton {
+	background-image: url("../images/delete.svg");
 }
 
 @media (max-width: 560px) {
