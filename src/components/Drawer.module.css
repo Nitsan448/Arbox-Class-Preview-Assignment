@@ -73,11 +73,10 @@
 }
 
 .workoutOfTheDay__icon {
-	background-image: url("../images/workoutOfTheDay.svg");
+	background-image: url("../images/workoutOfTheDay.png");
 	background-size: 4em 4em;
-	transform: rotateX(180deg);
-	height: 4.5em;
-	width: 4.5em;
+	height: 5em;
+	width: 5em;
 	background-color: pink;
 	border-radius: 50%;
 	margin: 0em auto 0.7em;

@@ -9,26 +9,24 @@ function Drawer(props) {
 
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-	const [classParticipents, setClassParticipents] = useState([
-		{ id: 0, name: "Walter White", photo: testIcon, checkedIn: false, participates: true },
-		{ id: 1, name: "Michal Scott", photo: testIcon, checkedIn: false, participates: true },
-		{ id: 2, name: "Todd Chavez", photo: testIcon, checkedIn: false, participates: false },
+	const [participents, setParticipents] = useState([
+		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: true },
+		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: true },
+		{ id: 2, name: "Todd Chavez", image: testIcon, checkedIn: false, inClass: false },
 	]);
 
 	function toggleParticipentCheckedInState(participentId) {
-		setClassParticipents(
-			classParticipents.map((participent) =>
+		setParticipents(
+			participents.map((participent) =>
 				participent.id === participentId ? { ...participent, checkedIn: !participent.checkedIn } : participent
 			)
 		);
 	}
 
-	function toggleParticipentParticipatesState(participentId) {
-		setClassParticipents(
-			classParticipents.map((participent) =>
-				participent.id === participentId
-					? { ...participent, participates: !participent.participates }
-					: participent
+	function toggleParticipentInClassState(participentId) {
+		setParticipents(
+			participents.map((participent) =>
+				participent.id === participentId ? { ...participent, inClass: !participent.inClass } : participent
 			)
 		);
 	}
@@ -51,7 +49,7 @@ function Drawer(props) {
 			<div className={classes.workoutOfTheDay}>
 				<div className={`${classes.workoutOfTheDay__icon} icon`}></div>
 				{/* TODO: change to something funny */}
-				<p>Workout of the day</p>
+				<p>Zumba</p>
 			</div>
 		);
 	}
@@ -87,7 +85,7 @@ function Drawer(props) {
 				<h3>You Should Know...</h3>
 
 				{/* TODO: make this something funny and according to the participent */}
-				<p className={classes.youShouldKnowText}>Dagan & Eden which participates in the class have a debt</p>
+				<p className={classes.youShouldKnowText}>Dagan & Eden which is in the class have a debt</p>
 			</div>
 		);
 	}
@@ -108,17 +106,17 @@ function Drawer(props) {
 					</button>
 					{isDropDownOpen && (
 						<div className={classes.dropDown__clients}>
-							{classParticipents.map(
+							{participents.map(
 								(participent) =>
-									!participent.participates && (
+									!participent.inClass && (
 										<button
-											onClick={() => toggleParticipentParticipatesState(participent.id)}
+											onClick={() => toggleParticipentInClassState(participent.id)}
 											className={classes.dropDown__client}
 											key={participent.id}>
 											<img
 												className={classes.clientImage}
 												alt={participent.name}
-												src={participent.photo}></img>
+												src={participent.image}></img>
 											{participent.name}
 										</button>
 									)
@@ -133,14 +131,14 @@ function Drawer(props) {
 	function renderParticipents() {
 		return (
 			<div>
-				{classParticipents.map(
+				{participents.map(
 					(participent) =>
-						participent.participates && (
+						participent.inClass && (
 							<div className={classes.participents} key={participent.id}>
 								<img
 									className={classes.participentImage}
 									alt={participent.name}
-									src={participent.photo}
+									src={participent.image}
 									width={24}
 									height={24}></img>
 								<p className={classes.participentName}>{participent.name}</p>
@@ -151,7 +149,7 @@ function Drawer(props) {
 								</button>
 								<button className={`${classes.callButton} icon`} />
 								<button
-									onClick={() => toggleParticipentParticipatesState(participent.id)}
+									onClick={() => toggleParticipentInClassState(participent.id)}
 									className={`${classes.deleteButton} icon`}
 								/>
 							</div>
