@@ -6,6 +6,7 @@ import Participant from "./Participant";
 
 function Drawer(props) {
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+	// TODO: Change participents and add images
 	const [participants, setParticipants] = useState([
 		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
@@ -78,18 +79,6 @@ function Drawer(props) {
 		);
 	}
 
-	function handleSearch(event) {
-		setIsDropDownOpen(true);
-		setSearchText(event.target.value);
-	}
-
-	function getFilteredParticipants() {
-		return participants.filter((participant) => {
-			const participantMatchesSearch = participant.name.toLowerCase().startsWith(searchText.toLowerCase());
-			return !participant.inClass && participantMatchesSearch;
-		});
-	}
-
 	function renderDropDownSection() {
 		return (
 			<div className={classes.dropDownSection}>
@@ -101,7 +90,7 @@ function Drawer(props) {
 						placeholder="Add Client"
 						onBlur={() => setIsDropDownOpen(false)}
 						onFocus={() => setIsDropDownOpen(true)}
-						onChange={handleSearch}
+						onChange={(event) => setSearchText(event.target.value)}
 						className={`${classes.dropDown__searchBar} ${isDropDownOpen && classes.active}`}
 					/>
 					<p className={classes.dropDown__plus}>+</p>
@@ -131,6 +120,13 @@ function Drawer(props) {
 					))}
 			</div>
 		);
+	}
+
+	function getFilteredParticipants() {
+		return participants.filter((participant) => {
+			const participantMatchesSearch = participant.name.toLowerCase().startsWith(searchText.toLowerCase());
+			return !participant.inClass && participantMatchesSearch;
+		});
 	}
 
 	function renderParticipantsSection() {
