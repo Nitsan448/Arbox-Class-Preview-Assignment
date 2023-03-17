@@ -26,6 +26,7 @@
 	box-shadow: -2px 0px 10px 2px rgba(0, 0, 0, 0.4);
 	transition-duration: 1s;
 	transition-property: transform;
+	overflow: scroll;
 }
 
 .drawer.active {

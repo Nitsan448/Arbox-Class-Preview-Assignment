@@ -6,10 +6,16 @@ import Participant from "./Participant";
 
 function Drawer(props) {
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-	const [participants, setparticipants] = useState([
+	const [participants, setParticipants] = useState([
 		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 2, name: "Todd Chavez", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 3, name: "Morty Smith", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 4, name: "Test 3", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 5, name: "Test 4", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 6, name: "Test 5", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 7, name: "Test 6", image: testIcon, checkedIn: false, inClass: false },
+		{ id: 8, name: "Test 7", image: testIcon, checkedIn: false, inClass: false },
 	]);
 	const [searchText, setSearchText] = useState("");
 
@@ -90,8 +96,8 @@ function Drawer(props) {
 				<ul className={classes.dropDown}>
 					<input
 						type="text"
+						value={searchText}
 						placeholder="Add Client"
-						id="myInput"
 						onClick={() => {
 							setIsDropDownOpen(!isDropDownOpen);
 						}}
@@ -112,7 +118,7 @@ function Drawer(props) {
 						onClick={() => {
 							setIsDropDownOpen(false);
 							setSearchText("");
-							toggleparticipantInClassState(participant.id);
+							toggleParticipantInClassState(participant.id);
 						}}
 						className={classes.dropDown__client}
 						key={participant.id}>
@@ -132,8 +138,8 @@ function Drawer(props) {
 						participant.inClass && (
 							<Participant
 								participant={participant}
-								toggleCheckedInState={toggleparticipantCheckedInState}
-								toggleInClassState={toggleparticipantInClassState}
+								toggleCheckedInState={toggleParticipantCheckedInState}
+								toggleInClassState={toggleParticipantInClassState}
 								key={participant.id}
 							/>
 						)
@@ -142,16 +148,16 @@ function Drawer(props) {
 		);
 	}
 
-	function toggleparticipantCheckedInState(participantId) {
-		setparticipants(
+	function toggleParticipantCheckedInState(participantId) {
+		setParticipants(
 			participants.map((participant) =>
 				participant.id === participantId ? { ...participant, checkedIn: !participant.checkedIn } : participant
 			)
 		);
 	}
 
-	function toggleparticipantInClassState(participantId) {
-		setparticipants(
+	function toggleParticipantInClassState(participantId) {
+		setParticipants(
 			participants.map((participant) =>
 				participant.id === participantId ? { ...participant, inClass: !participant.inClass } : participant
 			)
