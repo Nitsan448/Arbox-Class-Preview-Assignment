@@ -79,6 +79,7 @@ function Drawer(props) {
 	}
 
 	function handleSearch(event) {
+		setIsDropDownOpen(true);
 		setSearchText(event.target.value);
 	}
 
@@ -98,12 +99,12 @@ function Drawer(props) {
 						type="text"
 						value={searchText}
 						placeholder="Add Client"
-						onClick={() => {
-							setIsDropDownOpen(!isDropDownOpen);
-						}}
+						onBlur={() => setIsDropDownOpen(false)}
+						onFocus={() => setIsDropDownOpen(true)}
 						onChange={handleSearch}
-						className={`${classes.dropDown__stateButton} ${isDropDownOpen && classes.active}`}
+						className={`${classes.dropDown__searchBar} ${isDropDownOpen && classes.active}`}
 					/>
+					<p className={classes.dropDown__plus}>+</p>
 					{isDropDownOpen && renderDropDownMenu()}
 				</ul>
 			</div>
@@ -113,19 +114,21 @@ function Drawer(props) {
 	function renderDropDownMenu() {
 		return (
 			<div className={classes.dropDown__clients}>
-				{getFilteredParticipants().map((participant) => (
-					<button
-						onClick={() => {
-							setIsDropDownOpen(false);
-							setSearchText("");
-							toggleParticipantInClassState(participant.id);
-						}}
-						className={classes.dropDown__client}
-						key={participant.id}>
-						<img className={classes.clientImage} alt={participant.name} src={participant.image}></img>
-						{participant.name}
-					</button>
-				))}
+				{getFilteredParticipants()
+					.slice(0, 3)
+					.map((participant) => (
+						<button
+							onMouseDown={(event) => {
+								event.preventDefault();
+								setSearchText("");
+								toggleParticipantInClassState(participant.id);
+							}}
+							className={classes.dropDown__client}
+							key={participant.id}>
+							<img className={classes.clientImage} alt={participant.name} src={participant.image}></img>
+							{participant.name}
+						</button>
+					))}
 			</div>
 		);
 	}

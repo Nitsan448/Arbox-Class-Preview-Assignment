@@ -38,6 +38,7 @@
 	margin: 0.5em 0 var(--SECTION-MARGIN) 1em;
 }
 
+/* Todo add button to name */
 .classButtons__cancelClass,
 .classButtons__editClass {
 	height: 1.8em;
@@ -137,7 +138,7 @@
 	flex-direction: column;
 }
 
-.dropDown__stateButton {
+.dropDown__searchBar {
 	text-align: left;
 	display: flex;
 	border: var(--BORDER-SIZE) #f6f6f6 solid;
@@ -146,20 +147,29 @@
 	align-items: center;
 }
 
-.dropDown__stateButton:hover,
-.dropDown__stateButton:active,
-.dropDown__stateButton.active {
+.dropDown__searchBar::placeholder {
+	color: black;
+}
+
+.dropDown__searchBar:hover,
+.dropDown__searchBar:focus,
+.dropDown__searchBar:active,
+.dropDown__searchBar.active {
+	outline: none;
 	font-weight: bold;
 	border: var(--BORDER-GREEN);
 }
 
 .dropDown__plus {
-	text-align: right;
+	position: absolute;
+	top: 0%;
+	right: 5%;
 	font-size: 2rem;
 	font-weight: lighter;
+	pointer-events: none;
 }
 
-.dropDown__stateButton,
+.dropDown__searchBar,
 .dropDown__client {
 	width: 13em;
 	height: 2.5em;
@@ -196,7 +206,7 @@
 		width: 85%;
 	}
 
-	.dropDown__stateButton,
+	.dropDown__searchBar,
 	.dropDown__client {
 		width: 8em;
 		padding: 0 0.3em 0 0.3em;
