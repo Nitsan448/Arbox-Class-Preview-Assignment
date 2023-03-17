@@ -6,7 +6,7 @@ import Participant from "./Participant";
 
 function Drawer(props) {
 	const drawerClasses = props.isOpen ? `${classes.drawer} ${classes.active}` : classes.drawer;
-	const backdropClasses = props.isOpen ? `${classes.backdrop} ${classes.activeBackdrop}` : classes.backDrop;
+	const backdropClasses = props.isOpen ? `${classes.backdrop} ${classes.active}` : classes.backdrop;
 
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
@@ -81,7 +81,7 @@ function Drawer(props) {
 		// TODO: Add animation to drop down?
 		return (
 			<div className={classes.dropDownSection}>
-				<p>participants</p>
+				<h3 className={classes.participantsText}>participants</h3>
 				<div className={classes.dropDown}>
 					<button
 						className={classes.dropDown__stateButton}

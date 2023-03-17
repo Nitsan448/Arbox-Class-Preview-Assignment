@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	gap: 1em;
-	margin: 1.5em 3em 1.5em 3em;
+	margin: 1.5em var(--SIDES__MARGIN);
 	white-space: nowrap;
 }
 
@@ -16,11 +16,18 @@
 }
 
 .checkInButton {
-	background-color: lightgreen;
-	border-radius: var(--BORDER-RADIUS);
-	border: none;
-	padding: 0.5em 1.5em;
-	margin-right: 2em;
+	background-color: var(--GREEN);
+	border: 2px var(--GREEN) solid;
+	color: white;
+	border-radius: 4px;
+	padding: 0.45em 1.3em;
+	margin-right: 1em;
+	font-size: 1.1rem;
+}
+
+.checkInButton.active {
+	background-color: white;
+	color: var(--GREEN);
 }
 
 .callButton,
@@ -41,7 +48,7 @@
 @media (max-width: 540px) {
 	.participants {
 		gap: 0.5em;
-		margin: 1.5em 1.5em 1.5em 1.5em;
+		margin: 1.5em;
 		white-space: pre-wrap;
 		font-size: 0.9rem;
 	}
@@ -51,10 +58,7 @@
 	}
 
 	.checkInButton {
-		background-color: lightgreen;
-		border-radius: var(--BORDER-RADIUS);
-		border: none;
-		padding: 0.5em 1em;
-		margin-right: 1em;
+		padding: 0.45em 0.9em;
+		font-size: 1rem;
 	}
 }

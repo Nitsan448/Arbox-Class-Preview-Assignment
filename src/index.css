@@ -36,7 +36,7 @@ img {
 }
 
 hr {
-	background-color: rgb(209, 209, 209);
+	background-color: rgba(180, 180, 180, 0.2);
 	height: 1px;
 	border: none;
 }
