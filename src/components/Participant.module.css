@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
-	margin: 1.2em var(--SIDES__MARGIN);
+	margin: 1.2em var(--SIDES-MARGIN);
 	white-space: nowrap;
 }
 
@@ -20,9 +20,9 @@
 
 .checkInButton {
 	background-color: var(--GREEN);
-	border: 2px var(--GREEN) solid;
+	border: var(--BORDER-GREEN);
+	border-radius: var(--BORDER-RADIUS);
 	color: white;
-	border-radius: 4px;
 	padding: 0.35em 1.2em;
 	margin-right: 3em;
 }
@@ -40,17 +40,26 @@
 
 .callButton {
 	/* TODO: Change to whatsapp icon */
-	background-image: url("../images/call.svg");
+	background-image: url("../images/whatsapp.svg");
 }
 
 .deleteButton {
 	background-image: url("../images/delete.svg");
 }
 
+.checkInButton:hover,
+.checkInButton:active,
+.deleteButton:hover,
+.deleteButton:active,
+.callButton:hover,
+.callButton:active {
+	transform: scale(1.05);
+}
+
 @media (max-width: 540px) {
 	.participant {
 		gap: 0.25em;
-		margin: 1em var(--SIDES__MARGIN__PHONE);
+		margin: 1em var(--SIDES-MARGIN-PHONE);
 		white-space: pre-wrap;
 	}
 

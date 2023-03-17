@@ -8,8 +8,13 @@
 	--GREEN: #05c050;
 	--LIGHT-GREEN: #eefbef;
 
+	/* BORDER */
+	--BORDER-SIZE: 2px;
+	--BORDER-GREEN: var(--BORDER-SIZE) var(--GREEN) solid;
+	--BORDER-RADIUS: 4px;
+
 	/* MARGIN */
-	--SECTION__MARGIN: 1.8em;
-	--SIDES__MARGIN: 2.25em;
-	--SIDES__MARGIN__PHONE: 1.5em;
+	--SECTION-MARGIN: 1.8em;
+	--SIDES-MARGIN: 2.25em;
+	--SIDES-MARGIN-PHONE: 1.5em;
 }

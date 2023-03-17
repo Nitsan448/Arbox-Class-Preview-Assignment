@@ -63,7 +63,6 @@ function Drawer(props) {
 	function renderYouShouldKnowSection() {
 		return (
 			<div className={classes.youShouldKnow}>
-				{/* TODO: make it less bold */}
 				<h3>You Should Know...</h3>
 
 				{/* TODO: make this something funny and according to the participant */}
@@ -73,11 +72,10 @@ function Drawer(props) {
 	}
 
 	function renderDropDownSection() {
-		// TODO: Add animation to drop down?
 		return (
 			<div className={classes.dropDownSection}>
 				<h3 className={classes.participantsText}>Participants</h3>
-				<div className={classes.dropDown}>
+				<ul className={classes.dropDown}>
 					<button
 						className={`${classes.dropDown__stateButton} ${isDropDownOpen && classes.active}`}
 						onClick={() => {
@@ -87,7 +85,7 @@ function Drawer(props) {
 						<span className={classes.dropDown__plus}>+</span>
 					</button>
 					{isDropDownOpen && renderDropDownMenu()}
-				</div>
+				</ul>
 			</div>
 		);
 	}
