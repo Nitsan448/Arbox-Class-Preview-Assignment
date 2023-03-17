@@ -11,6 +11,7 @@ function Drawer(props) {
 		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 2, name: "Todd Chavez", image: testIcon, checkedIn: false, inClass: false },
 	]);
+	const [searchText, setSearchText] = useState("");
 
 	function renderClassButtonsSection() {
 		return (
@@ -71,19 +72,32 @@ function Drawer(props) {
 		);
 	}
 
+	function handleSearch(event) {
+		setSearchText(event.target.value);
+	}
+
+	function getFilteredParticipants() {
+		return participants.filter((participant) => {
+			const participantMatchesSearch = participant.name.toLowerCase().startsWith(searchText.toLowerCase());
+			return !participant.inClass && participantMatchesSearch;
+		});
+	}
+
 	function renderDropDownSection() {
 		return (
 			<div className={classes.dropDownSection}>
 				<h3 className={classes.participantsText}>Participants</h3>
 				<ul className={classes.dropDown}>
-					<button
-						className={`${classes.dropDown__stateButton} ${isDropDownOpen && classes.active}`}
+					<input
+						type="text"
+						placeholder="Add Client"
+						id="myInput"
 						onClick={() => {
 							setIsDropDownOpen(!isDropDownOpen);
-						}}>
-						<span>Add Client</span>
-						<span className={classes.dropDown__plus}>+</span>
-					</button>
+						}}
+						onChange={handleSearch}
+						className={`${classes.dropDown__stateButton} ${isDropDownOpen && classes.active}`}
+					/>
 					{isDropDownOpen && renderDropDownMenu()}
 				</ul>
 			</div>
@@ -93,24 +107,19 @@ function Drawer(props) {
 	function renderDropDownMenu() {
 		return (
 			<div className={classes.dropDown__clients}>
-				{participants.map(
-					(participant) =>
-						!participant.inClass && (
-							<button
-								onClick={() => {
-									setIsDropDownOpen(false);
-									toggleparticipantInClassState(participant.id);
-								}}
-								className={classes.dropDown__client}
-								key={participant.id}>
-								<img
-									className={classes.clientImage}
-									alt={participant.name}
-									src={participant.image}></img>
-								{participant.name}
-							</button>
-						)
-				)}
+				{getFilteredParticipants().map((participant) => (
+					<button
+						onClick={() => {
+							setIsDropDownOpen(false);
+							setSearchText("");
+							toggleparticipantInClassState(participant.id);
+						}}
+						className={classes.dropDown__client}
+						key={participant.id}>
+						<img className={classes.clientImage} alt={participant.name} src={participant.image}></img>
+						{participant.name}
+					</button>
+				))}
 			</div>
 		);
 	}
