@@ -1,18 +1,15 @@
 :root {
 	/* FONTS */
 	--FF: Arial, Helvetica, sans-serif;
-	--FS: clamp(0.6rem, 1.8vh, 1.1rem);
+	--FS: clamp(0.65rem, 1.95vh, 1.2rem);
 
 	/* COLORS */
 	--RED: #ff0b37;
 	--GREEN: #05c050;
 	--LIGHT-GREEN: #eefbef;
 
-	/* BORDERS */
-	/* --BORDER: 4px var(--GRAY) solid;
-	--BORDER-RADIUS: 4px; */
-
 	/* MARGIN */
-	--SECTION__MARGIN: 2.3em;
-	--SIDES__MARGIN: 2.5em;
+	--SECTION__MARGIN: 1.8em;
+	--SIDES__MARGIN: 2.25em;
+	--SIDES__MARGIN__PHONE: 1.5em;
 }

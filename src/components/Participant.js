@@ -5,7 +5,7 @@ function participant(props) {
 	const { id, name, image, checkedIn } = props.participant;
 	const checkInButtonClasses = checkedIn ? `${classes.checkInButton} ${classes.active}` : classes.checkInButton;
 	return (
-		<div className={classes.participants}>
+		<div className={classes.participant}>
 			<img className={classes.participantImage} alt={name} src={image} width={24} height={24}></img>
 			<p className={classes.participantName}>{name}</p>
 			<button onClick={() => props.toggleCheckedInState(id)} className={checkInButtonClasses}>

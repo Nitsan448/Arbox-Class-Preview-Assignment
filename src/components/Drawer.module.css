@@ -20,7 +20,7 @@
 	position: fixed;
 	height: 100%;
 	left: 100%;
-	width: 460px;
+	width: 29em;
 	z-index: 100;
 	background-color: white;
 
@@ -41,7 +41,7 @@
 .classButtons__editClass {
 	height: 1.8em;
 	width: 1.8em;
-	margin-right: 3em;
+	margin-right: 3.3em;
 }
 
 .classButtons__editClass {
@@ -58,38 +58,39 @@
 	align-items: center;
 	margin-left: 2.3em;
 	white-space: nowrap;
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 }
 
+/* TODO: shadow at the left */
 .workoutOfTheDay {
 	margin-bottom: var(--SECTION__MARGIN);
 	text-align: center;
 }
 
 .zumbaIcon {
-	background-image: url("../images/workoutOfTheDay.png");
-	background-size: 4em 4em;
+	background-image: url("../images/workoutOfTheDay.svg");
+	background-size: 3.65em 3.65em;
 	height: 5em;
 	width: 5em;
-	background-color: pink;
+	background-color: #e18dff;
 	border-radius: 50%;
-	margin: 0em auto 0.7em;
+	margin: 0em auto 0.6em;
 }
 
 .classInformation {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: var(--SECTION__MARGIN) 5em;
+	margin: var(--SECTION__MARGIN) 4.5em;
 	text-align: center;
 }
 
 .classInformation__coachIcon,
 .classInformation__startTimeIcon,
 .classInformation__participantsIcon {
-	height: 2.5em;
-	width: 2.5em;
-	margin: 0 auto 1.1em;
+	height: 2.4em;
+	width: 2.4em;
+	margin: 0 auto 1em;
 }
 
 .classInformation__coachIcon {
@@ -105,7 +106,7 @@
 }
 
 .classInformation__text {
-	margin-top: 0.2em;
+	margin-top: 0.15em;
 }
 
 .youShouldKnow {
@@ -113,7 +114,7 @@
 }
 
 .youShouldKnowText {
-	margin-top: 0.8em;
+	margin-top: 0.6em;
 }
 
 .dropDownSection {
@@ -123,7 +124,8 @@
 
 .dropDown {
 	position: absolute;
-	top: -50%;
+	/* TODO: fix this */
+	top: -25%;
 	right: 0%;
 	display: flex;
 	flex-direction: column;
@@ -134,18 +136,26 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	/* TODO: Make it bold on active */
+}
+
+.dropDown__stateButton:hover,
+.dropDown__stateButton:active,
+.dropDown__stateButton.active {
+	font-weight: bold;
+	border: 2px var(--GREEN) solid;
 }
 
 .dropDown__plus {
 	text-align: right;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: lighter;
 }
 
 .dropDown__stateButton,
 .dropDown__client {
 	width: 13em;
-	height: 3em;
+	height: 2.5em;
 	padding: 0 0.7em 0 0.7em;
 	border: none;
 }
@@ -172,7 +182,7 @@
 	border-radius: 50%;
 	width: 24px;
 	height: 24px;
-	margin-right: 0.7em;
+	margin-right: 0.6em;
 }
 
 @media (max-width: 540px) {

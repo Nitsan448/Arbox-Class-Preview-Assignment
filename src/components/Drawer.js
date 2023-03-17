@@ -5,11 +5,7 @@ import testIcon from "../images/MichalScott.jpg";
 import Participant from "./Participant";
 
 function Drawer(props) {
-	const drawerClasses = props.isOpen ? `${classes.drawer} ${classes.active}` : classes.drawer;
-	const backdropClasses = props.isOpen ? `${classes.backdrop} ${classes.active}` : classes.backdrop;
-
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
 	const [participants, setparticipants] = useState([
 		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: false },
 		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
@@ -40,7 +36,6 @@ function Drawer(props) {
 
 	function renderClassInformationSection() {
 		return (
-			// TODO: Make text length not change position of each div
 			<div className={classes.classInformation}>
 				<div>
 					<div className={`${classes.classInformation__coachIcon} icon`} />
@@ -72,7 +67,7 @@ function Drawer(props) {
 				<h3>You Should Know...</h3>
 
 				{/* TODO: make this something funny and according to the participant */}
-				<p className={classes.youShouldKnowText}>Dagan & Eden which is in the class have a debt</p>
+				<p className={classes.youShouldKnowText}>Dagan & Eden which participates in the class have a debt</p>
 			</div>
 		);
 	}
@@ -81,10 +76,10 @@ function Drawer(props) {
 		// TODO: Add animation to drop down?
 		return (
 			<div className={classes.dropDownSection}>
-				<h3 className={classes.participantsText}>participants</h3>
+				<h3 className={classes.participantsText}>Participants</h3>
 				<div className={classes.dropDown}>
 					<button
-						className={classes.dropDown__stateButton}
+						className={`${classes.dropDown__stateButton} ${isDropDownOpen && classes.active}`}
 						onClick={() => {
 							setIsDropDownOpen(!isDropDownOpen);
 						}}>
@@ -122,7 +117,7 @@ function Drawer(props) {
 		);
 	}
 
-	function renderparticipantsSection() {
+	function renderParticipantsSection() {
 		return (
 			<>
 				{participants.map(
@@ -160,8 +155,8 @@ function Drawer(props) {
 		<>
 			{createPortal(
 				<>
-					<div className={backdropClasses} />
-					<div className={drawerClasses}>
+					<div className={`${classes.backdrop} ${props.isOpen && classes.active}`} />
+					<div className={`${classes.drawer} ${props.isOpen && classes.active}`}>
 						{renderClassButtonsSection()}
 						{renderWorkoutOfTheDaySection()}
 						<hr />
@@ -170,7 +165,7 @@ function Drawer(props) {
 						{renderYouShouldKnowSection()}
 						<hr />
 						{renderDropDownSection()}
-						{renderparticipantsSection()}
+						{renderParticipantsSection()}
 					</div>
 				</>,
 				document.getElementById("drawer-root")

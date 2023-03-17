@@ -1,18 +1,21 @@
-.participants {
+.participant {
 	display: flex;
 	align-items: center;
-	gap: 1em;
-	margin: 1.5em var(--SIDES__MARGIN);
+	gap: 0.5em;
+	margin: 1.2em var(--SIDES__MARGIN);
 	white-space: nowrap;
 }
 
 .participantImage {
 	border-radius: 50%;
-	width: 36px;
-	height: 36px;
+	width: 2.2em;
+	height: 2.2em;
+	margin-right: 0.3em;
 }
+
 .participantName {
-	width: 40%;
+	width: 30%;
+	font-weight: bold;
 }
 
 .checkInButton {
@@ -20,9 +23,8 @@
 	border: 2px var(--GREEN) solid;
 	color: white;
 	border-radius: 4px;
-	padding: 0.45em 1.3em;
-	margin-right: 1em;
-	font-size: 1.1rem;
+	padding: 0.35em 1.2em;
+	margin-right: 3em;
 }
 
 .checkInButton.active {
@@ -32,8 +34,8 @@
 
 .callButton,
 .deleteButton {
-	width: 1.8em;
-	height: 1.8em;
+	width: 1.7em;
+	height: 1.7em;
 }
 
 .callButton {
@@ -46,19 +48,18 @@
 }
 
 @media (max-width: 540px) {
-	.participants {
-		gap: 0.5em;
-		margin: 1.5em;
+	.participant {
+		gap: 0.25em;
+		margin: 1em var(--SIDES__MARGIN__PHONE);
 		white-space: pre-wrap;
-		font-size: 0.9rem;
 	}
 
 	.participantName {
-		width: 30%;
+		width: 20%;
 	}
 
 	.checkInButton {
-		padding: 0.45em 0.9em;
-		font-size: 1rem;
+		padding: 0.4em 0.6em;
+		margin-right: 1em;
 	}
 }
