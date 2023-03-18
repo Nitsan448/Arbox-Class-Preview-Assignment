@@ -14,12 +14,20 @@ function Drawer(props) {
 	const [searchText, setSearchText] = useState("");
 
 	const [participants, setParticipants] = useState([
-		{ id: 0, name: "Walter White", image: walterWhiteImage, checkedIn: false, inClass: false },
-		{ id: 1, name: "Michal Scott", image: michalScottImage, checkedIn: false, inClass: false },
-		{ id: 2, name: "Todd Chavez", image: toddChavezImage, checkedIn: false, inClass: false },
-		{ id: 3, name: "Morty Smith", image: mortySmithImage, checkedIn: false, inClass: false },
-		{ id: 4, name: "Kratos", image: kratosImage, checkedIn: false, inClass: false },
-		{ id: 5, name: "Tyrion Lannister", image: tyrionLannisterImage, checkedIn: false, inClass: false },
+		{ id: 0, name: "Walter White", image: walterWhiteImage, checkedIn: false, inClass: false, hasDebt: true },
+		{ id: 1, name: "Michal Scott", image: michalScottImage, checkedIn: false, inClass: false, hasDebt: true },
+		{ id: 2, name: "Todd Chavez", image: toddChavezImage, checkedIn: false, inClass: false, hasDebt: true },
+		{ id: 3, name: "Morty Smith", image: mortySmithImage, checkedIn: false, inClass: false, hasDebt: true },
+		{ id: 4, name: "Kratos", image: kratosImage, checkedIn: false, inClass: false, hasDebt: false },
+		{
+			id: 5,
+			name: "Tyrion Lannister",
+			image: tyrionLannisterImage,
+			checkedIn: false,
+			inClass: false,
+			importantInfo: "",
+			hasDebt: false,
+		},
 	]);
 
 	function renderClassButtonsSection() {
@@ -71,14 +79,38 @@ function Drawer(props) {
 	}
 
 	function renderYouShouldKnowSection() {
-		return (
-			<div className={classes.youShouldKnow}>
-				<h3>You Should Know...</h3>
+		const youShouldKnowText = getYouShouldKnowText();
 
-				{/* TODO: make this something funny and according to the participant */}
-				<p className={classes.youShouldKnowText}>Dagan & Eden which participates in the class have a debt</p>
-			</div>
+		return (
+			<>
+				{youShouldKnowText !== "" && (
+					<div className={classes.youShouldKnow}>
+						<h3>You Should Know...</h3>
+
+						{/* TODO: make this something funny and according to the participant */}
+						<p className={classes.youShouldKnowText}>{youShouldKnowText}</p>
+					</div>
+				)}
+			</>
 		);
+	}
+
+	function getYouShouldKnowText() {
+		const participantsWithDebt = participants.filter((participant) => participant.hasDebt && participant.inClass);
+		const participantsNames = participantsWithDebt.map((participant) => participant.name);
+
+		let youShouldKnowText = "";
+		if (participantsNames.length === 1) {
+			youShouldKnowText = participantsNames[0] + " which participates in this class has a debt";
+		} else if (participantsNames.length > 1) {
+			youShouldKnowText =
+				participantsNames.slice(0, -1).join(", ") +
+				" and " +
+				participantsNames[participantsNames.length - 1] +
+				" which participate in this class have a debt";
+		}
+
+		return youShouldKnowText;
 	}
 
 	function renderDropDownSection() {
