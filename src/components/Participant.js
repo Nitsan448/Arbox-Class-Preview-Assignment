@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Participant.module.css";
 
 function participant(props) {
-	const { id, name, image, checkedIn } = props.participant;
+	const { id, name, image, checkedIn } = props.client;
 	const checkInButtonClasses = checkedIn ? `${classes.checkInButton} ${classes.active}` : classes.checkInButton;
 	return (
 		<div className={classes.participant}>
