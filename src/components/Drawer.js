@@ -25,7 +25,6 @@ function Drawer(props) {
 			image: tyrionLannisterImage,
 			checkedIn: false,
 			participates: false,
-			importantInfo: "",
 			hasDebt: false,
 		},
 	]);
@@ -75,7 +74,7 @@ function Drawer(props) {
 	}
 
 	function getParticipants() {
-		return clients.map((client) => client.participates);
+		return clients.filter((client) => client.participates);
 	}
 
 	function renderYouShouldKnowSection() {

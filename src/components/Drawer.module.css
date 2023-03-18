@@ -38,7 +38,6 @@
 	margin: 0.5em 0 var(--SECTION-MARGIN) 1em;
 }
 
-/* Todo add button to name */
 .classButtons__cancelClass,
 .classButtons__editClass {
 	height: 1.8em;
@@ -54,11 +53,11 @@
 }
 
 .classButtons__editClass {
-	background-image: url("../images/edit.svg");
+	background-image: url("../images/UI/edit.svg");
 }
 
 .classButtons__cancelClass {
-	background-image: url("../images/cancelClass.svg");
+	background-image: url("../images/UI/cancelClass.svg");
 	color: var(--RED);
 }
 
@@ -76,7 +75,7 @@
 }
 
 .zumbaIcon {
-	background-image: url("../images/workoutOfTheDay.svg");
+	background-image: url("../images/UI/workoutOfTheDay.svg");
 	background-size: 3.65em 3.65em;
 	height: 5em;
 	width: 5em;
@@ -102,15 +101,15 @@
 }
 
 .classInformation__coachIcon {
-	background-image: url("../images/coach.svg");
+	background-image: url("../images/UI/coach.svg");
 }
 
 .classInformation__startTimeIcon {
-	background-image: url("../images/startTime.svg");
+	background-image: url("../images/UI/startTime.svg");
 }
 
 .classInformation__participantsIcon {
-	background-image: url("../images/participants.svg");
+	background-image: url("../images/UI/participants.svg");
 }
 
 .classInformation__text {
@@ -174,7 +173,7 @@
 .dropDown__client {
 	width: 13em;
 	height: 2.5em;
-	padding: 0 0.7em 0 0.7em;
+	padding: 0 0.7em;
 }
 
 .dropDown__client:hover,
@@ -211,7 +210,7 @@
 	.dropDown__searchBar,
 	.dropDown__client {
 		width: 8em;
-		padding: 0 0.3em 0 0.3em;
+		padding: 0 0.3em;
 	}
 
 	.youShouldKnow,

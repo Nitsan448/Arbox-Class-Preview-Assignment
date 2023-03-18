@@ -32,21 +32,6 @@
 	color: var(--GREEN);
 }
 
-.callButton,
-.deleteButton {
-	width: 1.7em;
-	height: 1.7em;
-}
-
-.callButton {
-	/* TODO: Change to whatsapp icon */
-	background-image: url("../images/whatsapp.svg");
-}
-
-.deleteButton {
-	background-image: url("../images/delete.svg");
-}
-
 .checkInButton:hover,
 .checkInButton:active,
 .deleteButton:hover,
@@ -54,6 +39,20 @@
 .callButton:hover,
 .callButton:active {
 	transform: scale(1.05);
+}
+
+.callButton,
+.deleteButton {
+	width: 1.7em;
+	height: 1.7em;
+}
+
+.callButton {
+	background-image: url("../images/UI/whatsapp.svg");
+}
+
+.deleteButton {
+	background-image: url("../images/UI/delete.svg");
 }
 
 @media (max-width: 540px) {
