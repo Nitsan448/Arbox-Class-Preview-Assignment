@@ -7,7 +7,7 @@ Clone the repository:
 </code></pre>
 
 Install node modules:
-<pre><code>cd ./Arbox-Elevators-Assignment
+<pre><code>cd ./Arbox-Class-Preview-Assignment
 npm install
 </code></pre>
 
