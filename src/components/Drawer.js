@@ -86,7 +86,6 @@ function Drawer(props) {
 					<section className={classes.youShouldKnow}>
 						<h3>You Should Know...</h3>
 
-						{/* TODO: make this something funny and according to the participant */}
 						<p className={classes.youShouldKnowText}>{youShouldKnowText}</p>
 					</section>
 				)}

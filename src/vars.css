@@ -1,6 +1,6 @@
 :root {
 	/* FONTS */
-	--FF: Arial, Helvetica, sans-serif;
+	--FF: Calibri, "Trebuchet MS", sans-serif;
 	--FS: clamp(0.65rem, 1.95vh, 1.2rem);
 
 	/* COLORS */

@@ -9,10 +9,7 @@
 html {
 	scroll-behavior: smooth;
 	font-size: var(--FS);
-	/* font-family: var(--FF); */
-	font-family: Calibri, "Trebuchet MS", sans-serif;
-	/* height: 100%; */
-	/* color: var(--BLACK); */
+	font-family: var(--FF);
 }
 
 button,
