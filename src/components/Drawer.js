@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import classes from "./Drawer.module.css";
 import { createPortal } from "react-dom";
-import testIcon from "../images/MichalScott.jpg";
+import michalScottImage from "../images/characters/michalScott.jpg";
+import walterWhiteImage from "../images/characters/walterWhite.png";
+import toddChavezImage from "../images/characters/toddChavez.png";
+import mortySmithImage from "../images/characters/mortySmith.jpg";
+import kratosImage from "../images/characters/kratos.jpeg";
+import tyrionLannisterImage from "../images/characters/tyrionLannister.png";
 import Participant from "./Participant";
 
 function Drawer(props) {
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-	// TODO: Change participents and add images
-	const [participants, setParticipants] = useState([
-		{ id: 0, name: "Walter White", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 1, name: "Michal Scott", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 2, name: "Todd Chavez", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 3, name: "Morty Smith", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 4, name: "Test 3", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 5, name: "Test 4", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 6, name: "Test 5", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 7, name: "Test 6", image: testIcon, checkedIn: false, inClass: false },
-		{ id: 8, name: "Test 7", image: testIcon, checkedIn: false, inClass: false },
-	]);
 	const [searchText, setSearchText] = useState("");
+
+	const [participants, setParticipants] = useState([
+		{ id: 0, name: "Walter White", image: walterWhiteImage, checkedIn: false, inClass: false },
+		{ id: 1, name: "Michal Scott", image: michalScottImage, checkedIn: false, inClass: false },
+		{ id: 2, name: "Todd Chavez", image: toddChavezImage, checkedIn: false, inClass: false },
+		{ id: 3, name: "Morty Smith", image: mortySmithImage, checkedIn: false, inClass: false },
+		{ id: 4, name: "Kratos", image: kratosImage, checkedIn: false, inClass: false },
+		{ id: 5, name: "Tyrion Lannister", image: tyrionLannisterImage, checkedIn: false, inClass: false },
+	]);
 
 	function renderClassButtonsSection() {
 		return (
